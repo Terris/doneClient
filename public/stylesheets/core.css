@@ -25,8 +25,6 @@
 - Media Queries
 */
 
-$primary-red: #e24444;
-
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -53,14 +51,13 @@ $primary-red: #e24444;
 /* For devices larger than 550px */
 @media (min-width: 550px) {
   .container {
-    width: 80%; }
+    width: 80%;
+    margin: 0 auto;
+  }
   .column,
-  .columns {
-    margin-left: 4%; }
+  .columns { margin-left: 4%; }
   .column:first-child,
-  .columns:first-child {
-    margin-left: 0; }
-
+  .columns:first-child { margin-left: 0; }
   .one.column,
   .one.columns                    { width: 4.66666666667%; }
   .two.columns                    { width: 13.3333333333%; }
@@ -74,10 +71,8 @@ $primary-red: #e24444;
   .ten.columns                    { width: 82.6666666667%; }
   .eleven.columns                 { width: 91.3333333333%; }
   .twelve.columns                 { width: 100%; margin-left: 0; }
-
   .one-third.column               { width: 30.6666666667%; }
   .two-thirds.column              { width: 65.3333333333%; }
-
   .one-half.column                { width: 48%; }
 
   /* Offsets */
@@ -103,12 +98,10 @@ $primary-red: #e24444;
   .offset-by-ten.columns          { margin-left: 86.6666666667%; }
   .offset-by-eleven.column,
   .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
-
   .offset-by-one-third.column,
   .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
   .offset-by-two-thirds.column,
   .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
-
   .offset-by-one-half.column,
   .offset-by-one-half.columns     { margin-left: 52%; }
 
@@ -203,8 +196,8 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
-  background-color: $primary-red;
-  border-color: $primary-red; }
+  background-color: #e24444;
+  border-color: #e24444; }
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -263,7 +256,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid $primary-red;
+  border: 1px solid #e24444;
   outline: 0; }
 label,
 legend {
@@ -389,86 +382,15 @@ hr {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .header { border-bottom: 1px solid #ccc; color: #808080; margin-bottom: 40px; }
-.navigation ul {
-  list-style-type: none; font-size: 1.5em;
-  li { float: left; }
-  .logo { color: $primary-red; font-weight: 700; padding-right: 20px; }
-  a { color: #808080; text-decoration: none; padding: 20px;
-    &:hover { color: $primary-red; text-decoration: underline; }
-  }
-
-}
+.navigation ul { list-style-type: none; font-size: 1.5em; }
+.navigation ul li { float: left; }
+.navigation .logo a { color: #e24444; font-weight: 700; padding-right: 20px; }
+.navigation a { color: #808080; text-decoration: none; padding: 20px; }
+.navigation a:hover { color: #e24444; text-decoration: underline; }
 
 /* Typographic Utilities */
 .txt-center { text-align: center; }
 .summary { font-style: italic; font-size: 1.25em; }
-
-/* Vendor :: Draft.js Editor
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-.RichEditor-root {
-  background: #fff;
-  border: 1px solid #ddd;
-  font-family: 'Georgia', serif;
-  font-size: 14px;
-  padding: 15px;
-}
-
-.RichEditor-editor {
-  border-top: 1px solid #ddd;
-  cursor: text;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.RichEditor-editor .public-DraftEditorPlaceholder-root,
-.RichEditor-editor .public-DraftEditor-content {
-  margin: 0 -15px -15px;
-  padding: 15px;
-}
-
-.RichEditor-editor .public-DraftEditor-content {
-  min-height: 100px;
-}
-
-.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
-  display: none;
-}
-
-.RichEditor-editor .RichEditor-blockquote {
-  border-left: 5px solid #eee;
-  color: #666;
-  font-family: 'Hoefler Text', 'Georgia', serif;
-  font-style: italic;
-  margin: 16px 0;
-  padding: 10px 20px;
-}
-
-.RichEditor-editor .public-DraftStyleDefault-pre {
-  background-color: rgba(0, 0, 0, 0.05);
-  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-  font-size: 16px;
-  padding: 20px;
-}
-
-.RichEditor-controls {
-  font-family: 'Helvetica', sans-serif;
-  font-size: 14px;
-  margin-bottom: 5px;
-  user-select: none;
-}
-
-.RichEditor-styleButton {
-  color: #999;
-  cursor: pointer;
-  margin-right: 16px;
-  padding: 2px 0;
-  display: inline-block;
-}
-
-.RichEditor-activeButton {
-  color: #5890ff;
-}
 
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

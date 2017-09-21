@@ -1,0 +1,19 @@
+import React, { Component } from 'react'
+
+class Signin extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Signin Page</h2>
+      </div>
+    );
+  }
+}
+
+export default Signin
