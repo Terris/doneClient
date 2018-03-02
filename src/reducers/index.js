@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import GoalsReducer from './GoalsReducer'
+import authentication from './AuthReducer';
 
 const rootReducer = combineReducers({
-  goals: GoalsReducer
+  authentication
 });
 
 export default rootReducer;
