@@ -42,14 +42,29 @@ class Public extends Component {
     };
 
     return (
-      <div>
-        <h1>Public</h1>
-        {this.renderError()}
-        <form onSubmit={this.handleSubmit}>
-          <input name="email" type="email" placeholder="email" value={this.state.email} onChange={this.handleInputChange} />
-          <input name="password" type="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange} />
-          <input type="submit" value="Sign In" />
-        </form>
+
+      <div className="block__card aln-center" style={{width: 300+'px'}}>
+        <header>
+          <h2>Sign In</h2>
+          {this.renderError()}
+
+          <form onSubmit={this.handleSubmit}>
+            <fieldset>
+              <label>Email</label>
+              <input name="email" type="email" placeholder="email" value={this.state.email} onChange={this.handleInputChange} />
+            </fieldset>
+            <fieldset>
+              <label>Password</label>
+              <input name="password" type="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange} />
+            </fieldset>
+            <fieldset className="action-group">
+              <input type="submit" value="Sign In" />
+            </fieldset>
+          </form>
+          <div className="card_footer">
+            <p className="txt-center">New user? <a href="/signup">Sign Up</a></p>
+          </div>
+        </header>
       </div>
     );
   }

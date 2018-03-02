@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
-import { AUTHORIZED_USER } from './actions';
+import { authTypes } from './constants';
 import registerServiceWorker from './registerServiceWorker';
+
 // Components
 import Public from './Public';
 import PrivateRoute from './components/auth/PrivateRoute';
@@ -18,7 +19,7 @@ const store = createStoreWithMiddleware(reducers)
 // dispath AUTHORIZED_USER if user_token
 const user_token = localStorage.getItem('user_token');
 if( user_token ) {
-  store.dispatch({ type: AUTHORIZED_USER });
+  store.dispatch({ type: authTypes.AUTHORIZED_USER });
 }
 
 ReactDOM.render((
