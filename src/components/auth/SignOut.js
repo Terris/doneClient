@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOutUser } from '../../actions';
 
-class PrivateRoute extends Component {
+class SignOut extends Component {
   constructor(props) {
     super(props)
     this.handleLogOut = this.handleLogOut.bind(this)
@@ -20,7 +20,6 @@ class PrivateRoute extends Component {
 
     return(
       <div>
-        <h1>Private</h1>
         <button onClick={this.handleLogOut}>Sign Out</button>
       </div>
     )
@@ -33,4 +32,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { signOutUser })(PrivateRoute);
+export default connect(mapStateToProps, { signOutUser })(SignOut);
