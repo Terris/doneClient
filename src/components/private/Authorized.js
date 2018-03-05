@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import SignOutButton from '../auth/SignOutButton';
-import User from './User';
+import CurrentUser from './CurrentUser';
 import Boards from './Boards';
 
 class Authorized extends Component {
@@ -13,7 +13,7 @@ class Authorized extends Component {
     }
     return(
       <div>
-        <User />
+        <CurrentUser />
         <SignOutButton />
         <Boards />
       </div>
