@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
-import { authConstants } from './constants';
+import { authConstants, storageConstants } from './constants';
 import registerServiceWorker from './registerServiceWorker';
 
 // Components
 import Home from './components/Home';
-import SignUp from './components/SignUp';
+import SignUp from './components/auth/SignUp';
 import Authorized from './components/private/Authorized';
 //Actions & Reducers
 import reducers from './reducers';
@@ -18,7 +18,7 @@ const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers)
 
 // dispath AUTHORIZED_USER if user_token
-const userToken = localStorage.getItem(authConstants.USER_TOKEN);
+const userToken = localStorage.getItem(storageConstants.USER_TOKEN);
 if( userToken ) {
   store.dispatch({ type: authConstants.AUTHORIZED_USER });
 }

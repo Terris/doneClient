@@ -1,6 +1,6 @@
-import { authConstants } from '../constants'
+import { authConstants, storageConstants } from '../constants'
 
-let userToken = localStorage.getItem(authConstants.USER_TOKEN);
+let userToken = localStorage.getItem(storageConstants.USER_TOKEN);
 const initialState = userToken ? { loggedIn: true } : {}
 
 export default function(state = initialState, action) {

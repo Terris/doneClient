@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { authConstants } from '../constants';
+import { authConstants, storageConstants } from '../constants';
 import { alertActions } from './'
 import { API_ROOT } from '../api-config';
 
@@ -10,7 +10,7 @@ export const signInUser = ( email, password ) => {
       password: password
     }).then(response => {
       // SUCCESS
-      localStorage.setItem(authConstants.USER_TOKEN, response.data.auth_token);
+      localStorage.setItem(storageConstants.USER_TOKEN, response.data.auth_token);
       dispatch({ type: authConstants.AUTHORIZED_USER, userToken: response.data.authToken });
     }).catch((error) => {
       // FAILURE
@@ -39,7 +39,7 @@ export const signUpUser = ( email, password, password_confirmation ) => {
 }
 
 export const signOutUser = () => {
-  localStorage.removeItem(authConstants.USER_TOKEN);
+  localStorage.removeItem(storageConstants.USER_TOKEN);
   return { type: authConstants.UNAUTHORIZED_USER };
 }
 

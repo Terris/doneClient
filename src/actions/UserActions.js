@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { userConstants, authConstants.USER_TOKEN } from '../constants';
+import { userConstants, storageConstants.USER_TOKEN } from '../constants';
 import { API_ROOT } from '../api-config';
 
 let userToken = localStorage.getItem(USER_TOKEN);
 
 export const getCurrentUser() {
   return dispatch => {
-    
+
   }
 }
 

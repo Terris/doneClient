@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signUpUser } from '../actions';
-import Alert from './Alert';
+import { signUpUser } from '../../actions';
+import Alert from '../Alert';
 
 class SignUp extends Component {
 
