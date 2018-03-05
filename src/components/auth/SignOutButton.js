@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOutUser } from '../../actions';
 
-class SignOut extends Component {
+class SignOutButton extends Component {
   constructor(props) {
     super(props)
     this.handleLogOut = this.handleLogOut.bind(this)
@@ -14,10 +13,6 @@ class SignOut extends Component {
   }
 
   render() {
-    if (!this.props.loggedIn) {
-      return <Redirect to="/" />
-    }
-
     return(
       <div>
         <button onClick={this.handleLogOut}>Sign Out</button>
@@ -26,10 +21,4 @@ class SignOut extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    loggedIn: state.authentication.loggedIn
-  }
-}
-
-export default connect(mapStateToProps, { signOutUser })(SignOut);
+export default connect(null, { signOutUser })(SignOutButton)

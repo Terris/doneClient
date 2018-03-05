@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signInUser } from '../../actions';
+import Alert from '../Alert';
 
 class SignIn extends Component {
 
@@ -25,16 +26,6 @@ class SignIn extends Component {
     this.props.signInUser(this.state.email, this.state.password);
   };
 
-  renderError() {
-    if (this.props.errorMessage) {
-      return (
-        <div>
-          <p>{this.props.errorMessage}</p>
-        </div>
-      );
-    }
-  };
-
   render() {
 
     if (this.props.loggedIn) {
@@ -46,7 +37,7 @@ class SignIn extends Component {
       <div className="block__card aln-center" style={{width: 300+'px'}}>
         <header>
           <h2>Sign In</h2>
-          {this.renderError()}
+          <Alert />
           <form onSubmit={this.handleSubmit}>
             <fieldset>
               <label>Email</label>
@@ -71,8 +62,7 @@ class SignIn extends Component {
 
 function mapStateToProps(state) {
   return {
-    loggedIn: state.authentication.loggedIn,
-    errorMessage: state.authentication.errorMessage
+    loggedIn: state.auth.loggedIn,
   }
 }
 

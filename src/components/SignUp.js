@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signUpUser } from '../actions'
+import { signUpUser } from '../actions';
+import Alert from './Alert';
 
 class SignUp extends Component {
 
@@ -26,16 +27,6 @@ class SignUp extends Component {
     this.props.signUpUser(this.state.email, this.state.password, this.state.password_confirmation)
   }
 
-  renderError() {
-    if (this.props.errorMessage) {
-      return (
-        <div>
-          <p>{this.props.errorMessage}</p>
-        </div>
-      );
-    }
-  };
-
   render() {
 
     if (this.props.loggedIn) {
@@ -46,25 +37,28 @@ class SignUp extends Component {
       <div className="block__card aln-center" style={{width: 300+'px'}}>
         <header>
           <h2>Sign Up</h2>
-          {this.renderError()}
-          <form onSubmit={this.handleSubmit}>
-            <fieldset>
-              <label>Email</label>
-              <input name="email" type="email" placeholder="email" value={this.state.email} onChange={this.handleInputChange} required />
-            </fieldset>
-            <fieldset>
-              <label>Password</label>
-              <input name="password" type="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange} required />
-            </fieldset>
-            <fieldset>
-              <label>Confirm Password</label>
-              <input name="password_confirmation" type="password" placeholder="confirm password" value={this.state.password_confirmation} onChange={this.handleInputChange} required />
-            </fieldset>
-            <fieldset className="action-group">
-              <input type="submit" value="Sign In" />
-            </fieldset>
-          </form>
+          <Alert />
         </header>
+        <form onSubmit={this.handleSubmit}>
+          <fieldset>
+            <label>Email</label>
+            <input name="email" type="email" placeholder="email" value={this.state.email} onChange={this.handleInputChange} required />
+          </fieldset>
+          <fieldset>
+            <label>Password</label>
+            <input name="password" type="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange} required />
+          </fieldset>
+          <fieldset>
+            <label>Confirm Password</label>
+            <input name="password_confirmation" type="password" placeholder="confirm password" value={this.state.password_confirmation} onChange={this.handleInputChange} required />
+          </fieldset>
+          <fieldset className="action-group">
+            <input type="submit" value="Sign In" />
+          </fieldset>
+        </form>
+        <div className="card_footer">
+          <p className="txt-center">Not quite ready? <Link to="/">Cancel</Link></p>
+        </div>
       </div>
     )
   }
@@ -72,8 +66,7 @@ class SignUp extends Component {
 
 function mapStateToProps(state) {
   return {
-    loggedIn: state.authentication.loggedIn,
-    errorMessage: state.authentication.errorMessage
+    loggedIn: state.auth.loggedIn,
   }
 }
 

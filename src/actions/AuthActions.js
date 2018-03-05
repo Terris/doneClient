@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { authTypes } from '../constants';
+import { authConstants } from '../constants';
+import { alertActions } from './'
 import { API_ROOT } from '../api-config';
 
 export const signInUser = ( email, password ) => {
@@ -8,14 +9,13 @@ export const signInUser = ( email, password ) => {
       email: email,
       password: password
     }).then(response => {
-      if(!response.data.auth_token) {
-        dispatch(authError(response.data.message));
-      } else {
-        localStorage.setItem('user_token', response.data.auth_token);
-        dispatch({ type: authTypes.AUTHORIZED_USER });
-      }
+      // SUCCESS
+      localStorage.setItem(authConstants.USER_TOKEN, response.data.auth_token);
+      dispatch({ type: authConstants.AUTHORIZED_USER, userToken: response.data.authToken });
     }).catch((error) => {
-      dispatch(authError("Wrong Email/Password Combo"));
+      // FAILURE
+      handleError(error, dispatch);
+      return({ type: authConstants.AUTH_ERROR });
     });
   }
 }
@@ -27,31 +27,35 @@ export const signUpUser = ( email, password, password_confirmation ) => {
       password: password,
       password_confirmation: password_confirmation
     }).then(response => {
+      // Success
       localStorage.setItem('user_token', response.data.auth_token);
-      dispatch({ type: authTypes.AUTHORIZED_USER });
+      dispatch({ type: authConstants.AUTHORIZED_USER });
     }).catch((error) => {
-      if (error.response) {
-        dispatch(authError(error.response.data.message));
-      } else if (error.request) {
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
-      }
-      console.log(error.config);
-
+      // FAILURE
+      handleError(error, dispatch);
+      return({ type: authConstants.AUTH_ERROR });
     });
   }
 }
 
 export const signOutUser = () => {
-  localStorage.removeItem('user_token');
-  return { type: authTypes.UNAUTHORIZED_USER };
+  localStorage.removeItem(authConstants.USER_TOKEN);
+  return { type: authConstants.UNAUTHORIZED_USER };
 }
 
 export const authError = (error) => {
   return {
-    type: authTypes.AUTH_ERROR,
+    type: authConstants.AUTH_ERROR,
     payload: error
   };
 };
+
+const handleError = (error, dispatch) => {
+  if (error.response) {
+    return dispatch(alertActions.error(error.response.data.message));
+  } else if (error.request) {
+    return dispatch(alertActions.error(error.request));
+  } else {
+    return dispatch(alertActions.error(error.message));
+  }
+}
