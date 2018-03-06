@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Alert from '../Alert';
-import SignOutButton from '../auth/SignOutButton';
+import Navigation from './Navigation';
 import CurrentUser from './CurrentUser';
 import Boards from './Boards';
 
@@ -14,9 +14,9 @@ class Authorized extends Component {
     }
     return(
       <div>
-        <Alert />
+        <Navigation />
         <CurrentUser />
-        <SignOutButton />
+        <Alert />
         <Boards />
       </div>
     )

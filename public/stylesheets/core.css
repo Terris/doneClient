@@ -80,7 +80,6 @@ input[type="submit"] {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-
 }
 
 button:hover,
@@ -89,8 +88,6 @@ input[type="submit"]:hover {
 }
 button:active,
 input[type="submit"]:active {
-  -webkit-box-shadow: inset 1px 1px 6px -1px rgba(0,0,0,1);
-  -moz-box-shadow: inset 1px 1px 6px -1px rgba(0,0,0,1);
   box-shadow: inset 1px 1px 6px -1px rgba(0,0,0,1);
 }
 button:focus,
@@ -107,7 +104,10 @@ button.btn-text {
   font-weight: 400;
   padding: inherit;
 }
-
+button.btn-text:hover { color: #98a1d4;  }
+button.btn-text:active {
+  box-shadow: none;
+}
 /* Forms
 ================================================= */
 fieldset { padding: 12px 20px 0 20px; border: none; }
@@ -155,7 +155,6 @@ textarea { font-size: 1.25em; min-height: 160px; }
 @media (min-width: 400px) {
   .container {
     width: 100%;
-    padding: 20px;
   }
 }
 
@@ -225,6 +224,29 @@ textarea { font-size: 1.25em; min-height: 160px; }
 .block__board {
   background: #fff;
   color: #252525;
+}
+
+/* Primary Navigation */
+.primarynav {
+  float: right;
+  position: relative;
+}
+.primarynav .togglebtn {
+  padding: 6px 12px;
+}
+.primarynav .togglebtn.open {
+  background: #08090e;
+}
+.primarynav .navlinks {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 160px;
+  border-radius: 3px;
+  background: #08090e;
+}
+.primarynav .navlinks.closed {
+  display: none;
 }
 
 

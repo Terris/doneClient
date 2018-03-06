@@ -11,7 +11,9 @@ class Boards extends Component {
   }
 
   renderBoards() {
-    console.log(this.props.boards);
+    if (!this.props.boards.length) {
+      return(<p>Create a new Board to get started.</p>)
+    }
     return _.map(this.props.boards, board => {
       return(
         <div key={board.id} className="block__card block__board three columns">
@@ -28,10 +30,11 @@ class Boards extends Component {
     return(
       <div>
         <Alert />
+        <button>New Board</button>
         <div className="row block__mod">
           {this.renderBoards()}
         </div>
-        <p>Create a new Board to get started.</p>
+
       </div>
     )
   }
