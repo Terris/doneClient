@@ -99,6 +99,15 @@ textarea:focus {
   outline:0;
 }
 
+button.btn-text {
+  background: none;
+  font-size: 1em;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+  padding: inherit;
+}
+
 /* Forms
 ================================================= */
 fieldset { padding: 12px 20px 0 20px; border: none; }

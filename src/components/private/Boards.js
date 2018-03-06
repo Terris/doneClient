@@ -1,17 +1,35 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchBoards } from '../../actions'
+import Alert from '../Alert';
 
 class Boards extends Component {
 
   componentDidMount() {
+    this.props.fetchBoards()
+  }
+
+  renderBoards() {
+    console.log(this.props.boards);
+    return _.map(this.props.boards, board => {
+      return(
+        <div key={board.id} className="block__card block__board three columns">
+          <h2>{board.name}</h2>
+        </div>
+      )
+    });
   }
 
   render() {
+    if (!this.props.boards) {
+      return ( <p>Loading Boards...</p>)
+    }
     return(
       <div>
+        <Alert />
         <div className="row block__mod">
-          <div className="block__card block__board three columns">
-            <h2>Travel More</h2>
-          </div>
+          {this.renderBoards()}
         </div>
         <p>Create a new Board to get started.</p>
       </div>
@@ -19,4 +37,7 @@ class Boards extends Component {
   }
 }
 
-export default Boards
+function mapStateToProps(state) {
+  return { boards: state.boards.boards }
+}
+export default connect(mapStateToProps, { fetchBoards })(Boards)

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../../actions'
-import Alert from '../Alert';
 
 class CurrentUser extends Component {
   componentDidMount() {
@@ -13,7 +12,6 @@ class CurrentUser extends Component {
     }
     return(
       <div>
-        <Alert />
         <h2>Hello, {this.props.currentUser.email}</h2>
       </div>
     )
