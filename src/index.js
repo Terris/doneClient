@@ -17,12 +17,6 @@ import reducers from './reducers';
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers)
 
-// dispath AUTHORIZED_USER if user_token
-const userToken = localStorage.getItem(storageConstants.USER_TOKEN);
-if( userToken ) {
-  store.dispatch({ type: authConstants.AUTHORIZED_USER });
-}
-
 ReactDOM.render((
   <Provider store={store}>
     <Router>

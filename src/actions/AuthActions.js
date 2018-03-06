@@ -43,13 +43,6 @@ export const signOutUser = () => {
   return { type: authConstants.UNAUTHORIZED_USER };
 }
 
-export const authError = (error) => {
-  return {
-    type: authConstants.AUTH_ERROR,
-    payload: error
-  };
-};
-
 const handleError = (error, dispatch) => {
   if (error.response) {
     return dispatch(alertActions.error(error.response.data.message));

@@ -14,7 +14,7 @@ class CurrentUser extends Component {
     return(
       <div>
         <Alert />
-        <h1>Hello, {this.props.currentUser.email}</h1>
+        <h2>Hello, {this.props.currentUser.email}</h2>
       </div>
     )
   }

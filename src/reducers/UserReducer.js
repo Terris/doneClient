@@ -6,8 +6,6 @@ export default function user(state = {}, action) {
       return {
         currentUser: action.currentUser
       }
-    case userConstants.USER_ERROR:
-      return { errorMessage: action.payload }
     default:
       return state;
   }

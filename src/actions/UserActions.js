@@ -3,12 +3,10 @@ import { userConstants, storageConstants } from '../constants';
 import { alertActions } from './'
 import { API_ROOT } from '../api-config';
 
-let userToken = localStorage.getItem(storageConstants.USER_TOKEN);
-
 export const fetchCurrentUser = () => {
   return dispatch => {
     axios.get(`${API_ROOT}/user`, {
-      headers: { Authorization: userToken }
+      headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
     })
     .then((response) => {
       dispatch({ type: userConstants.CURRENT_USER, currentUser: response.data })
@@ -17,13 +15,6 @@ export const fetchCurrentUser = () => {
     })
   }
 }
-
-export const userError = (error) => {
-  return {
-    type: userConstants.USER_ERROR,
-    payload: error
-  };
-};
 
 const handleError = (error, dispatch) => {
   if (error.response) {
