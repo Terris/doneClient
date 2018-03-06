@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchBoards } from '../../actions'
-import Alert from '../Alert';
+import { fetchBoards, addNewBoard } from '../../actions'
+
+import Board from './Board';
 
 class Boards extends Component {
 
@@ -11,16 +12,15 @@ class Boards extends Component {
   }
 
   renderBoards() {
-    if (!this.props.boards.length) {
-      return(<p>Create a new Board to get started.</p>)
-    }
     return _.map(this.props.boards, board => {
       return(
-        <div key={board.id} className="block__card block__board three columns">
-          <h2>{board.name}</h2>
-        </div>
+        <Board key={board.id} board={board} />
       )
     });
+  }
+
+  addNewBoard = () => {
+    this.props.addNewBoard();
   }
 
   render() {
@@ -29,18 +29,16 @@ class Boards extends Component {
     }
     return(
       <div>
-        <Alert />
-        <button>New Board</button>
-        <div className="row block__mod">
+        <p><button onClick={this.addNewBoard}>New Board</button></p>
+        <div className="row">
           {this.renderBoards()}
         </div>
-
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return { boards: state.boards.boards }
+  return { boards: state.boards }
 }
-export default connect(mapStateToProps, { fetchBoards })(Boards)
+export default connect(mapStateToProps, { fetchBoards, addNewBoard })(Boards)

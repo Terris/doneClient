@@ -15,6 +15,18 @@ export const fetchBoards = () => {
   }
 }
 
+export const addNewBoard = () => {
+  return dispatch => {
+    axios.post(`${API_ROOT}/boards`, { name: 'New Board' }, {
+      headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
+    }).then((response) => {
+      dispatch({ type: boardConstants.NEW_BOARD, board: response.data })
+    }).catch((error) => {
+      handleError(error, dispatch)
+    })
+  }
+}
+
 const handleError = (error, dispatch) => {
   if (error.response) {
     return dispatch(alertActions.error(error.response.data.message));

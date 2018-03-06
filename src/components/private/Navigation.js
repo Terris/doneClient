@@ -18,7 +18,7 @@ export default class Navigation extends Component {
 
   render() {
     return(
-      <nav className="block__mod primarynav">
+      <nav className="primarynav">
         <button className={`btn-text togglebtn ${this.state.open}`} onClick={this.toggleOpenClosed.bind(this)}>
           <i className="fas fa-bars"></i>
         </button>
