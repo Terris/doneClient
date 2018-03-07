@@ -15,9 +15,9 @@ export const fetchTasks = () => {
   }
 }
 
-export const addNewTask = ( board, callback) => {
+export const addNewTask = ({ task }, callback) => {
   return dispatch => {
-    axios.post(`${API_ROOT}/tasks`, { board_id: board.id, description: "Task description"}, {
+    axios.post(`${API_ROOT}/tasks`, { task }, {
       headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
     }).then((response) => {
       dispatch({ type: taskConstants.NEW_TASK, task: response.data });

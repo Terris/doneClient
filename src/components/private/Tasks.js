@@ -18,9 +18,9 @@ class Tasks extends Component {
 
   };
 
-  addNewTask() {
-    const board = this.props.board
-    this.props.addNewTask( board, (newTaskID) => {
+  addNewTask = () => {
+    const task = { board_id: this.props.board.id, description: "task description" }
+    this.props.addNewTask({ task }, (newTaskID) => {
       this.setState({ editingTaskID: newTaskID }, () => {this.description.select()});
     });
   }
