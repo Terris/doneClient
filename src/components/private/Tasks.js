@@ -1,10 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTasks, addNewTask } from '../../actions'
+import { addNewTask } from '../../actions'
 
 import Task from './Task';
-
 
 class Tasks extends Component {
   constructor(props) {
@@ -12,19 +11,21 @@ class Tasks extends Component {
     this.state = {
       editingTaskID: null
     }
+    this.addNewTask = this.addNewTask.bind(this);
+    this.onUpdateTask = this.onUpdateTask.bind(this);
   }
+  componentDidMount(){
 
-  componentDidMount() {
-    this.props.fetchTasks();
-  }
+  };
 
-  addNewTask = () => {
-    this.props.addNewTask((newID) => {
-      this.setState({ editingTaskID: newID }, () => {this.description.select()});
+  addNewTask() {
+    const board = this.props.board
+    this.props.addNewTask( board, (newTaskID) => {
+      this.setState({ editingTaskID: newTaskID }, () => {this.description.select()});
     });
   }
 
-  updateTask = () => {
+  onUpdateTask() {
     this.setState({ editingTaskID: null });
   }
 
@@ -34,14 +35,16 @@ class Tasks extends Component {
 
   renderTasks() {
     return _.map(this.props.tasks, task => {
-      return(
-        <Task key={task.id} task={task}
-          onClick={this.enableEditing}
-          onUpdateTask={this.updateTask}
-          descriptionRef={input => this.description = input}
-          editing={ (this.state.editingTaskID === task.id) ? true : false }
-        />
-      )
+      if (task.board_id === this.props.board.id ) {
+        return(
+          <Task key={task.id} task={task}
+            onClick={this.enableEditing}
+            onUpdateTask={this.onUpdateTask}
+            descriptionRef={input => this.description = input}
+            editing={ (this.state.editingTaskID === task.id) ? true : false }
+          />
+        )
+      }
     });
   }
 
@@ -63,4 +66,4 @@ class Tasks extends Component {
 function mapStateToProps(state) {
   return { tasks: state.tasks }
 }
-export default connect(mapStateToProps, {fetchTasks, addNewTask})(Tasks)
+export default connect(mapStateToProps, {addNewTask})(Tasks)

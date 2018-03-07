@@ -15,9 +15,9 @@ export const fetchTasks = () => {
   }
 }
 
-export const addNewTask = (callback) => {
+export const addNewTask = ( board, callback) => {
   return dispatch => {
-    axios.post(`${API_ROOT}/tasks`, { description: "Task description"}, {
+    axios.post(`${API_ROOT}/tasks`, { board_id: board.id, description: "Task description"}, {
       headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
     }).then((response) => {
       dispatch({ type: taskConstants.NEW_TASK, task: response.data });
@@ -33,7 +33,7 @@ export const updateTask = ({ task }) => {
     axios.put(`${API_ROOT}/tasks/${task.id}`, { task }, {
       headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
     }).then((response) => {
-      dispatch({ type: taskConstants.UPDATE_TASK, task: task})
+      dispatch({ type: taskConstants.UPDATE_TASK, task: response.data})
     }).catch((error) =>{
       handleError(error, dispatch);
     })

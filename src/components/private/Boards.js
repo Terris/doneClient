@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchBoards, addNewBoard } from '../../actions'
+import { fetchBoards, fetchTasks, addNewBoard } from '../../actions'
 
 import Board from './Board';
 
@@ -15,7 +15,8 @@ class Boards extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchBoards()
+    this.props.fetchBoards();
+    this.props.fetchTasks();
   }
 
   addNewBoard = () => {
@@ -29,7 +30,10 @@ class Boards extends Component {
   }
 
   enableEditing = (id) => {
-    this.setState({editingBoardID: id });
+    this.setState({editingBoardID: id }, () => {
+      this.name.focus();
+      this.name.setSelectionRange(this.name.value.length, this.name.value.length);
+    });
   }
 
   renderBoards() {
@@ -63,4 +67,4 @@ class Boards extends Component {
 function mapStateToProps(state) {
   return { boards: state.boards }
 }
-export default connect(mapStateToProps, { fetchBoards, addNewBoard })(Boards)
+export default connect(mapStateToProps, { fetchBoards, fetchTasks, addNewBoard })(Boards)

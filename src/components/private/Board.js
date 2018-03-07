@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { updateBoard, deleteBoard } from '../../actions';
 
+import Tasks from './Tasks'
+
 class Board extends Component {
   constructor(props) {
     super(props)
@@ -31,29 +33,32 @@ class Board extends Component {
     this.setState({ [name]: value });
   }
 
-  render() {
+  renderBoard() {
     if (this.props.editing) {
       return(
-        <div className="three columns">
-          <div className="block__mod block__card block__board">
-            <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
-              <fieldset>
-                <input type="text" name="name" placeholder="Board name" className="input-h2"
-                  ref={this.props.nameRef}
-                  value={this.state.name}
-                  onChange={this.handleInputChange}
-                />
-              </fieldset>
-
-            </form>
-          </div>
-        </div>
+        <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
+          <fieldset>
+            <input type="text" name="name" placeholder="Board name" className="input-h2"
+              ref={this.props.nameRef}
+              value={this.state.name}
+              onChange={this.handleInputChange}
+            />
+          </fieldset>
+        </form>
+      )
+    } else {
+      return(
+        <h2 onClick={this.editBoard}><span className="editable">{this.props.board.name}</span></h2>
       )
     }
+  }
+
+  render() {
     return(
-      <div className="three columns">
+      <div className="four columns">
         <div className="block__mod block__card block__board">
-          <h2>{this.props.board.name}</h2>
+          {this.renderBoard()}
+          <Tasks board={this.props.board} />
         </div>
       </div>
     )
