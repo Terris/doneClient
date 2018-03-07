@@ -18,24 +18,31 @@ class Boards extends Component {
     this.props.fetchBoards()
   }
 
-  renderBoards() {
-    return _.map(this.props.boards, board => {
-      return(
-        <Board key={board.id} board={board} onClick={this.enableEditing}
-          editing={ (this.state.editingBoardID === board.id) ? true : false }
-        />
-      )
+  addNewBoard = () => {
+    this.props.addNewBoard((newID) => {
+      this.setState({ editingBoardID: newID }, () => { this.name.select() })
     });
   }
 
-  addNewBoard = () => {
-    this.props.addNewBoard((newID) => {
-      this.setState({ editingBoardID: newID })
-    });
+  updateBoard = () => {
+    this.setState({ editingBoardID: null });
   }
 
   enableEditing = (id) => {
     this.setState({editingBoardID: id });
+  }
+
+  renderBoards() {
+    return _.map(this.props.boards, board => {
+      return(
+        <Board key={board.id} board={board}
+          onClick={this.enableEditing}
+          onUpdateBoard={this.updateBoard}
+          nameRef={input => this.name = input}
+          editing={ (this.state.editingBoardID === board.id) ? true : false }
+        />
+      )
+    });
   }
 
   render() {

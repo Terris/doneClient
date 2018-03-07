@@ -28,6 +28,30 @@ export const addNewBoard = (callback) => {
   }
 }
 
+export const updateBoard = ({ board }) => {
+  return dispatch => {
+    axios.put(`${API_ROOT}/boards/${board.id}`, { board }, {
+      headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
+    }).then((response) => {
+      dispatch({ type: boardConstants.UPDATE_BOARD, board: board})
+    }).catch((error) =>{
+      handleError(error, dispatch);
+    })
+  }
+}
+
+export const deleteBoard = ({ board }) => {
+  return dispatch => {
+    axios.delete(`${API_ROOT}/boards/${board.id}`, {
+      headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
+    }).then((response) => {
+      dispatch({ type: boardConstants.DELETE_BOARD, board: board})
+    }).catch((error) => {
+      handleError(error, dispatch)
+    })
+  }
+}
+
 const handleError = (error, dispatch) => {
   if (error.response) {
     return dispatch(alertActions.error(error.response.data.message));
