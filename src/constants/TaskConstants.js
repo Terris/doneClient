@@ -1,0 +1,6 @@
+export const taskConstants = {
+  FETCH_TASKS: 'FETCH_TASKS',
+  NEW_TASK: 'NEW_TASK',
+  UPDATE_TASK: 'UPDATE_TASK',
+  DELETE_TASK: 'DELETE_TASK'
+};

@@ -15,12 +15,13 @@ export const fetchBoards = () => {
   }
 }
 
-export const addNewBoard = () => {
+export const addNewBoard = (callback) => {
   return dispatch => {
     axios.post(`${API_ROOT}/boards`, { name: 'New Board' }, {
       headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
     }).then((response) => {
-      dispatch({ type: boardConstants.NEW_BOARD, board: response.data })
+      dispatch({ type: boardConstants.NEW_BOARD, board: response.data });
+      callback(response.data.id);
     }).catch((error) => {
       handleError(error, dispatch)
     })

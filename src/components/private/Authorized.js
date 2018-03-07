@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Alert from '../Alert';
 import Navigation from './Navigation';
 import CurrentUser from './CurrentUser';
-import Boards from './Boards';
+import Tasks from './Tasks';
 
 class Authorized extends Component {
   render() {
@@ -17,7 +17,7 @@ class Authorized extends Component {
         <Navigation />
         <CurrentUser />
         <Alert />
-        <Boards />
+        <Tasks />
       </div>
     )
   }

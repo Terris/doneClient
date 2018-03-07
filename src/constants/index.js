@@ -3,3 +3,4 @@ export * from './StorageConstants';
 export * from './AuthConstants';
 export * from './UserConstants';
 export * from './BoardConstants';
+export * from './TaskConstants';

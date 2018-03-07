@@ -102,7 +102,7 @@ button.btn-text {
   text-transform: none;
   letter-spacing: normal;
   font-weight: 400;
-  padding: inherit;
+  padding: 0;
 }
 button.btn-text:hover { color: #98a1d4;  }
 button.btn-text:active {
@@ -250,6 +250,26 @@ textarea { font-size: 1.25em; min-height: 160px; }
   display: none;
 }
 
+/* Tasks */
+ul.tasks { list-style-type: none; }
+ul.tasks input {
+  border: none;
+  background: #3f69ca;
+  padding: 0 0 0 6px;
+  margin-left: -6px;
+  overflow: visible;
+  color: inherit;
+}
+ul.tasks li button.btn-task-trash {
+  display: none;
+  opacity: 0;
+  margin-left: 10px;
+  transition: opacity 1s ease;
+}
+ul.tasks li:hover button.btn-task-trash {
+  display: inline-block;
+  opacity: 1;
+}
 
 /* Clearing
 ================================================= */

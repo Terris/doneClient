@@ -7,6 +7,13 @@ import Board from './Board';
 
 class Boards extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      editingBoardID: null
+    }
+  }
+
   componentDidMount() {
     this.props.fetchBoards()
   }
@@ -14,13 +21,21 @@ class Boards extends Component {
   renderBoards() {
     return _.map(this.props.boards, board => {
       return(
-        <Board key={board.id} board={board} />
+        <Board key={board.id} board={board} onClick={this.enableEditing}
+          editing={ (this.state.editingBoardID === board.id) ? true : false }
+        />
       )
     });
   }
 
   addNewBoard = () => {
-    this.props.addNewBoard();
+    this.props.addNewBoard((newID) => {
+      this.setState({ editingBoardID: newID })
+    });
+  }
+
+  enableEditing = (id) => {
+    this.setState({editingBoardID: id });
   }
 
   render() {
