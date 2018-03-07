@@ -24,7 +24,12 @@ class SignUp extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.signUpUser(this.state.email, this.state.password, this.state.password_confirmation)
+    const user = {
+      email: this.state.email,
+      password: this.state.password,
+      password_confirmation: this.state.password_confirmation
+    }
+    this.props.signUpUser(user)
   }
 
   render() {

@@ -20,15 +20,13 @@ export const signInUser = ( email, password ) => {
   }
 }
 
-export const signUpUser = ( email, password, password_confirmation ) => {
+export const signUpUser = (user) => {
   return(dispatch) => {
     axios.post(`${API_ROOT}/signup`, {
-      email: email,
-      password: password,
-      password_confirmation: password_confirmation
+      user: user
     }).then(response => {
       // Success
-      localStorage.setItem('user_token', response.data.auth_token);
+      localStorage.setItem(storageConstants.USER_TOKEN, response.data.auth_token);
       dispatch({ type: authConstants.AUTHORIZED_USER });
     }).catch((error) => {
       // FAILURE
