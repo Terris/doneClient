@@ -14,9 +14,6 @@ class Tasks extends Component {
     this.addNewTask = this.addNewTask.bind(this);
     this.onUpdateTask = this.onUpdateTask.bind(this);
   }
-  componentDidMount(){
-
-  };
 
   addNewTask = () => {
     const task = { board_id: this.props.board.id, description: "task description" }

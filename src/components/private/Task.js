@@ -48,6 +48,7 @@ class Task extends Component {
             value={this.state.description}
             onChange={this.handleInputChange} />
         </form>
+        <button className="btn-text btn-task-delete" onClick={this.deleteTask}><i className="fas fa-times-circle"></i></button>
       </li>
     )
   }

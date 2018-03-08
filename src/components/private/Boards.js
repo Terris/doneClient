@@ -27,6 +27,7 @@ class Boards extends Component {
 
   updateBoard = () => {
     this.setState({ editingBoardID: null });
+    this.name.blur();
   }
 
   enableEditing = (id) => {

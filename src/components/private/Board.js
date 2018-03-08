@@ -33,33 +33,19 @@ class Board extends Component {
     this.setState({ [name]: value });
   }
 
-  renderBoard() {
-    if (this.props.editing) {
-      return(
+  render() {
+    return(
+      <div className="block__mod block__card block__board" style={{maxWidth: 550+"px", }}>
         <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
           <fieldset>
-            <input type="text" name="name" placeholder="Board name" className="input-h2"
+            <input type="text" name="name" placeholder="Board name" className="input-h2" autoComplete="off"
               ref={this.props.nameRef}
               value={this.state.name}
               onChange={this.handleInputChange}
             />
           </fieldset>
         </form>
-      )
-    } else {
-      return(
-        <h2 onClick={this.editBoard}><span className="editable">{this.props.board.name}</span></h2>
-      )
-    }
-  }
-
-  render() {
-    return(
-      <div className="four columns">
-        <div className="block__mod block__card block__board">
-          {this.renderBoard()}
-          <Tasks board={this.props.board} />
-        </div>
+        <Tasks board={this.props.board} />
       </div>
     )
   }
