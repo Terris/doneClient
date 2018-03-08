@@ -29,6 +29,9 @@ p, ul, ol { margin: 0; padding: 12px 20px; max-width: 630px; }
 p.lead { font-size: 18px; line-height: 1.5em; }
 hr { display: block; height: 0; margin: 12px 20px; padding: 0; border: none; border-top: 1px solid #ccc; }
 
+::selection { background: #ffe100; }
+::-moz-selection { background: #ffe100; }
+
 /* Links
 ================================================= */
 a { color: #e2ce38; text-decoration: none; }
@@ -207,6 +210,7 @@ textarea { font-size: 1.25em; min-height: 160px; }
 ================================================= */
 
 .txt-center { text-align: center; }
+.txt-right { text-align: right; }
 .aln-center { margin: 0 auto; float: none; }
 
 /* Template
@@ -249,7 +253,7 @@ textarea { font-size: 1.25em; min-height: 160px; }
 /* Board */
 .block__board {
   background: #000;
-  color: #848484;
+  color: #bdb9b9;
 }
 .block__board .editable {
 
@@ -257,11 +261,11 @@ textarea { font-size: 1.25em; min-height: 160px; }
 .block__board fieldset {
   padding: 16px 20px 17px 20px;
 }
-.block__board input {
+.block__board input[type="text"] {
   border-radius: 0;
   background: none;
   border: none;
-  color: #848484;
+  color: #bdb9b9;
   padding: 0;
 }
 .block__board .editable {
@@ -269,20 +273,33 @@ textarea { font-size: 1.25em; min-height: 160px; }
   width: 100%;
   cursor: text;
 }
-.block__board input:hover,
-.block__board input:focus,
+.block__board input[type="text"]:hover,
+.block__board input[type="text"]:focus,
 .block__board .editable:hover {
   border-bottom: 1px dashed #848484;
   margin-bottom: -1px;
 }
 
-.block__board input.input-h2 {
+.block__board input[type="text"].input-h2 {
   font-size: 1.5em;
 }
 
 /* Tasks */
+.block__board .btn-new-task {
+  font-size: 1em;
+  padding: 3px 8px;
+  border-radius: 100px;
+  margin-bottom: 6px;
+}
 ul.tasks { list-style-type: none; }
 ul.tasks li { position: relative; }
+ul.tasks li .editable { width: 90%; }
+ul.tasks li button.task-checkbox {
+  vertical-align: top;
+  margin: 3px 8px 0 0;
+  font-size: 0.85em;
+  padding-top: 0;
+}
 ul.tasks li button.btn-task-delete {
   display: none;
   position: absolute;
@@ -290,9 +307,13 @@ ul.tasks li button.btn-task-delete {
   right: 0;
   margin-left: 10px;
   font-size: 0.75em;
+  color: #848484;
 }
 ul.tasks li:hover button.btn-task-delete {
   display: inline-block;
+}
+ul.tasks button.btn-task-delete:hover {
+  color: #e2cd02;
 }
 
 /* Clearing

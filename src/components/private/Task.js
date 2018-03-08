@@ -52,6 +52,7 @@ class Task extends Component {
     }
     return(
       <li className="task">
+        <button className="btn-text task-checkbox"><i className="far fa-square"></i></button>
         <span onClick={this.editTask} className="editable">{this.props.task.description}</span>
         <button className="btn-text btn-task-delete" onClick={this.deleteTask}><i className="fas fa-times-circle"></i></button>
       </li>

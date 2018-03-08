@@ -30,7 +30,10 @@ class Tasks extends Component {
   }
 
   enableEditing = (id) => {
-    this.setState({editingTaskID: id }, () => { this.description.focus()});
+    this.setState({editingTaskID: id }, () => {
+      this.description.focus();
+      this.description.setSelectionRange(this.description.value.length, this.description.value.length)
+    });
   }
 
   renderTasks() {
@@ -54,10 +57,10 @@ class Tasks extends Component {
     }
     return (
       <div>
-        <p><button onClick={this.addNewTask}>New Task</button></p>
         <ul className="tasks">
           {this.renderTasks()}
         </ul>
+        <p className="txt-right"><button onClick={this.addNewTask} className="btn-new-task"><i className="fas fa-plus"></i></button></p>
       </div>
     )
   }
