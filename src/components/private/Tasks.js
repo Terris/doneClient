@@ -27,6 +27,7 @@ class Tasks extends Component {
 
   onUpdateTask() {
     this.setState({ editingTaskID: null });
+    this.description.blur();
   }
 
   enableEditing = (id) => {

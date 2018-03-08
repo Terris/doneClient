@@ -38,24 +38,16 @@ class Task extends Component {
   }
 
   render() {
-    if (this.props.editing) {
-      return(
-        <li className="task">
-          <button className="btn-text task-checkbox"><i className="far fa-square"></i></button>
-          <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
-            <input type="text" name="description" placeholder="description"
-              ref={this.props.descriptionRef}
-              value={this.state.description}
-              onChange={this.handleInputChange} />
-          </form>
-        </li>
-      )
-    }
+
     return(
       <li className="task">
         <button className="btn-text task-checkbox"><i className="far fa-square"></i></button>
-        <span onClick={this.editTask} className="editable">{this.props.task.description}</span>
-        <button className="btn-text btn-task-delete" onClick={this.deleteTask}><i className="fas fa-times-circle"></i></button>
+        <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
+          <input type="text" name="description" placeholder="description" autoComplete="off"
+            ref={this.props.descriptionRef}
+            value={this.state.description}
+            onChange={this.handleInputChange} />
+        </form>
       </li>
     )
   }
