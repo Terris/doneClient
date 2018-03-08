@@ -293,18 +293,20 @@ textarea { font-size: 1.25em; min-height: 160px; }
 }
 ul.tasks { list-style-type: none; }
 ul.tasks li { position: relative; }
-ul.tasks li .editable { width: 90%; }
+ul.tasks li .editable,
+ul.tasks li form { display: inline-block; width: 92% }
 ul.tasks li button.task-checkbox {
-  vertical-align: top;
-  margin: 3px 8px 0 0;
-  font-size: 0.85em;
+  vertical-align: bottom;
+  margin: 1px 8px 0 0;
+  font-size: 0.8em;
   padding-top: 0;
+  display: inline-block;
 }
 ul.tasks li button.btn-task-delete {
   display: none;
   position: absolute;
   top: 2px;
-  right: 0;
+  right: 6px;
   margin-left: 10px;
   font-size: 0.75em;
   color: #848484;

@@ -40,7 +40,8 @@ class Task extends Component {
   render() {
     if (this.props.editing) {
       return(
-        <li>
+        <li className="task">
+          <button className="btn-text task-checkbox"><i className="far fa-square"></i></button>
           <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
             <input type="text" name="description" placeholder="description"
               ref={this.props.descriptionRef}
