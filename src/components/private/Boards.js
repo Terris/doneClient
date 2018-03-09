@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchBoards, fetchTasks, addNewBoard } from '../../actions'
 
 import Board from './Board';
-import NewBoardFaker from './NewBoardFaker';
+//import NewBoardFaker from './NewBoardFaker';
 
 class Boards extends Component {
 

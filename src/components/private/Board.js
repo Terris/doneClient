@@ -19,7 +19,9 @@ class Board extends Component {
   }
 
   deleteBoard = () => {
-    this.props.deleteBoard({board: this.props.board})
+    if (window.confirm('Are you sure?')){
+      this.props.deleteBoard({board: this.props.board})
+    }
   }
 
   handleSubmit(e) {
