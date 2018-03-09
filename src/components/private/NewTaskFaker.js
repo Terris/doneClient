@@ -21,9 +21,11 @@ class NewTaskFaker extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const task = { board_id: this.props.board.id, description: this.state.description }
-    this.props.addNewTask({ task }, () => {
-      this.setState({ description: '' })
-    });
+    if(task.description !== ""){
+      this.props.addNewTask({ task }, () => {
+        this.setState({ description: '' })
+      });
+    }
   }
 
   render() {

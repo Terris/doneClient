@@ -29,7 +29,11 @@ class Task extends Component {
       description: this.state.description,
       completed: this.state.completed
     }
-    this.props.updateTask({ task: task });
+    if(task.description !== "") {
+      this.props.updateTask({ task: task });
+    } else {
+      this.props.deleteTask({task: this.props.task});
+    }
   }
 
   handleInputChange(e) {

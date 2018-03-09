@@ -18,6 +18,10 @@ class Board extends Component {
     this.props.onClick(this.props.board.id);
   }
 
+  deleteBoard = () => {
+    this.props.deleteBoard({board: this.props.board})
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.onUpdateBoard();
@@ -46,6 +50,9 @@ class Board extends Component {
           </fieldset>
         </form>
         <Tasks board={this.props.board} />
+        <div className="board_footer">
+          <button className="btn-text" onClick={this.deleteBoard}><i className="far fa-trash-alt"></i></button>
+        </div>
       </div>
     )
   }

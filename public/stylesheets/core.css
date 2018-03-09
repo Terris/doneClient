@@ -283,6 +283,18 @@ textarea { font-size: 1.25em; min-height: 160px; }
 .block__board input[type="text"].input-h2 {
   font-size: 1.5em;
 }
+.block__board .board_footer {
+  padding: 5px;
+  background: #0c0c0c;
+  border-radius: 0 0 3px 3px;
+  text-align: center;
+}
+.block__board .board_footer button.btn-text {
+  color: #272727;
+}
+.block__board .board_footer button.btn-text:hover {
+  color: #ff0000;
+}
 
 /* Tasks */
 .block__board .btn-new-task {
