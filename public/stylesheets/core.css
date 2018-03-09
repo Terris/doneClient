@@ -292,17 +292,17 @@ textarea { font-size: 1.25em; min-height: 160px; }
   margin-bottom: 6px;
 }
 ul.tasks { list-style-type: none; }
-ul.tasks li { position: relative; }
-ul.tasks li form { display: inline-block; width: 95% }
+ul.tasks li.task { position: relative; }
+ul.tasks li.task form { display: inline-block; width: 95% }
 
-ul.tasks li button.task-checkbox {
+ul.tasks li.task button.task-checkbox {
   vertical-align: bottom;
   margin: 1px 8px 0 0;
   font-size: 0.8em;
   padding-top: 0;
   display: inline-block;
 }
-ul.tasks li button.btn-task-delete {
+ul.tasks li.task button.btn-task-delete {
   display: none;
   position: absolute;
   top: 2px;
@@ -311,7 +311,7 @@ ul.tasks li button.btn-task-delete {
   font-size: 0.75em;
   color: #848484;
 }
-ul.tasks li:hover button.btn-task-delete {
+ul.tasks li.task:hover button.btn-task-delete {
   display: inline-block;
 }
 ul.tasks button.btn-task-delete:hover {

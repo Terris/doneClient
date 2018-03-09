@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNewTask } from '../../actions'
 
 import Task from './Task';
+import NewTaskFaker from './NewTaskFaker';
 
 class Tasks extends Component {
   constructor(props) {
@@ -57,8 +57,8 @@ class Tasks extends Component {
       <div>
         <ul className="tasks">
           {this.renderTasks()}
+          <NewTaskFaker board={this.props.board} />
         </ul>
-        <p className="txt-right"><button onClick={this.addNewTask} className="btn-new-task"><i className="fas fa-plus"></i></button></p>
       </div>
     )
   }
@@ -67,4 +67,4 @@ class Tasks extends Component {
 function mapStateToProps(state) {
   return { tasks: state.tasks }
 }
-export default connect(mapStateToProps, {addNewTask})(Tasks)
+export default connect(mapStateToProps)(Tasks)
