@@ -21,8 +21,8 @@ ReactDOM.render((
     <Router>
       <div>
         <Switch>
-          <Route path="/private" component={Authorized} />
           <Route path="/signup" component={SignUp} />
+          <Route path="/user" component={Authorized} />
           <Route component={Home} />
         </Switch>
       </div>

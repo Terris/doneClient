@@ -30,7 +30,6 @@ class Task extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onUpdateTask();
     const task = {
       id: this.props.task.id,
       description: this.state.description,
@@ -41,6 +40,7 @@ class Task extends Component {
     } else {
       this.props.deleteTask({task: this.props.task});
     }
+    this.props.onUpdateTask();
   }
 
   handleInputChange(e) {

@@ -30,7 +30,6 @@ class Tasks extends Component {
   enableEditing = (id) => {
     this.setState({editingTaskID: id }, () => {
       this.description.focus();
-      this.description.setSelectionRange(this.description.value.length, this.description.value.length)
     });
   }
 

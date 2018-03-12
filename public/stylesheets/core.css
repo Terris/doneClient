@@ -227,7 +227,7 @@ textarea { font-size: 1.25em; min-height: 160px; }
   padding: 6px 12px;
 }
 .primarynav .togglebtn.open {
-  background: #000;
+  background: #a2a2a2;
 }
 .primarynav .navlinks {
   position: absolute;
@@ -235,7 +235,7 @@ textarea { font-size: 1.25em; min-height: 160px; }
   right: 10px;
   width: 160px;
   border-radius: 3px;
-  background: #000;
+  background: #a2a2a2;
 }
 .primarynav .navlinks.closed {
   display: none;
@@ -309,7 +309,13 @@ ul.tasks li.task.task-complete input {
   text-decoration-color: #656363;
   color: #656363;
 }
-ul.tasks li.task form { display: inline-block; width: 95% }
+ul.tasks li.task form {
+  position: absolute;
+  left: 20px;
+  display: inline-block;
+  width: 100%;
+  padding-right: 20px;
+}
 
 ul.tasks li.task button.task-checkbox {
   position: relative;

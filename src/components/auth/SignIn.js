@@ -29,7 +29,7 @@ class SignIn extends Component {
   render() {
 
     if (this.props.loggedIn) {
-      return <Redirect to="/private" />
+      return <Redirect to="/user" />
     };
 
     return (
