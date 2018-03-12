@@ -14,14 +14,14 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 body {
-  background: #1b1b1b;
+  background: #c5c5c5
 }
 body, input, textarea, button {
   font-size: 1em;
   line-height: 1.5rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #fff;
+  color: #545454;
 }
 h1,h2,h3,h4,h5,h6 { font-weight: 400; }
 h1,h2,h3,h4,h5,h6,p,ul,ol { margin: 0; padding: 20px; }
@@ -73,7 +73,7 @@ table tr td:first-child { border: none; }
 button,
 input[type="submit"] {
   cursor: pointer;
-  background: #e2cd02;
+  background: #0b9847;
   padding: 10px 20px 8px 20px;
   border: none;
   border-radius: 3px;
@@ -86,7 +86,7 @@ input[type="submit"] {
 
 button:hover,
 input[type="submit"]:hover {
-  background: #c1ad16;
+  background: #10b958;
 }
 button:active,
 input[type="submit"]:active {
@@ -101,14 +101,14 @@ textarea:focus {
 /* Text Button */
 button.btn-text {
   background: none;
-  color: #fff;
+  color: #545454;
   font-size: 1em;
   text-transform: none;
   letter-spacing: normal;
   font-weight: 400;
   padding: 0;
 }
-button.btn-text:hover { color: #e2ce38;  }
+button.btn-text:hover { color: #10b958;  }
 button.btn-text:active {
   box-shadow: none;
 }
@@ -123,7 +123,7 @@ label {
   font-weight: 700;
   text-align: right;
 }
-input,
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -253,10 +253,6 @@ textarea { font-size: 1.25em; min-height: 160px; }
 
 /* Board */
 .block__board {
-  background: #000;
-  color: #bdb9b9;
-}
-.block__board .editable {
 
 }
 .block__board fieldset {
@@ -266,7 +262,7 @@ textarea { font-size: 1.25em; min-height: 160px; }
   border-radius: 0;
   background: none;
   border: none;
-  color: #bdb9b9;
+
   padding: 0;
 }
 .block__board .editable {
@@ -286,15 +282,8 @@ textarea { font-size: 1.25em; min-height: 160px; }
 }
 .block__board .board_footer {
   padding: 5px;
-  background: #0c0c0c;
   border-radius: 0 0 3px 3px;
   text-align: center;
-}
-.block__board .board_footer button.btn-text {
-  color: #272727;
-}
-.block__board .board_footer button.btn-text:hover {
-  color: #ff0000;
 }
 
 /* Tasks */
@@ -305,15 +294,43 @@ textarea { font-size: 1.25em; min-height: 160px; }
   margin-bottom: 6px;
 }
 ul.tasks { list-style-type: none; }
-ul.tasks li.task { position: relative; }
+ul.tasks li.task { position: relative; padding-bottom: 6px; }
+ul.tasks li.task.task-complete input {
+  text-decoration: line-through;
+  text-decoration-color: #656363;
+  color: #656363;
+}
 ul.tasks li.task form { display: inline-block; width: 95% }
 
 ul.tasks li.task button.task-checkbox {
-  vertical-align: bottom;
-  margin: 1px 8px 0 0;
-  font-size: 0.8em;
-  padding-top: 0;
+  position: relative;
   display: inline-block;
+  width: 14px; height: 14px;
+  background: none;
+  border: 2px solid #545454;
+  padding: 0;
+  margin: 1px 8px 0 0;
+
+}
+ul.tasks li.task.task-complete button.task-checkbox {
+  background: #7d7d7d;
+  border-color: #7d7d7d;
+}
+ul.tasks li.task.task-complete button.task-checkbox::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  color: red;
+  display: block;
+  width: 6px;
+  height: 3px;
+  background: none;
+  padding: 0;
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-60deg);
 }
 ul.tasks li.task button.btn-task-delete {
   display: none;

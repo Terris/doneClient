@@ -41,7 +41,7 @@ class Board extends Component {
 
   render() {
     return(
-      <div className="block__mod block__card block__board" style={{maxWidth: 550+"px", }}>
+      <div className="block__board" style={{maxWidth: 550+"px", }}>
         <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
           <fieldset className="board-header">
             <input type="text" name="name" placeholder="Board name" className="input-h2" autoComplete="off"

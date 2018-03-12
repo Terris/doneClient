@@ -17,6 +17,13 @@ class Task extends Component {
     this.props.onClick(this.props.task.id);
   }
 
+  completeTask = (e) => {
+    e.persist();
+    this.setState({ completed: (this.state.completed) ? false : true }, () => {
+      this.handleSubmit(e);
+    })
+  }
+
   deleteTask = () => {
     this.props.deleteTask({task: this.props.task})
   }
@@ -41,11 +48,19 @@ class Task extends Component {
     this.setState({ [name]: value });
   }
 
+  renderCheckBox = () => {
+    if(this.state.completed) {
+      return ( <i className="fas fa-check-square"></i>)
+    } else {
+      return ( <i className="far fa-square"></i> )
+    }
+  }
+
   render() {
 
     return(
-      <li className="task">
-        <button className="btn-text task-checkbox"><i className="far fa-square"></i></button>
+      <li className={`task task-${(this.state.completed) ? 'complete' : 'incomplete'}`}>
+        <button className="task-checkbox" onClick={this.completeTask}></button>
         <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
           <input type="text" name="description" placeholder="description" autoComplete="off"
             ref={this.props.descriptionRef}

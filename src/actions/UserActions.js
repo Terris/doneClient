@@ -18,7 +18,7 @@ export const fetchCurrentUser = () => {
 
 const handleError = (error, dispatch) => {
   if (error.response) {
-    if(error.response.data.message == "Signature has expired") {
+    if(error.response.data.message === "Signature has expired") {
       return dispatch(signOutUser());
     }
     return dispatch(alertActions.error(error.response.data.message));

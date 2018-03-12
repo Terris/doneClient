@@ -36,7 +36,22 @@ class Tasks extends Component {
 
   renderTasks() {
     return _.map(this.props.tasks, task => {
-      if (task.board_id === this.props.board.id ) {
+      if (task.board_id === this.props.board.id && !task.completed ) {
+        return(
+          <Task key={task.id} task={task}
+            onClick={this.enableEditing}
+            onUpdateTask={this.onUpdateTask}
+            descriptionRef={input => this.description = input}
+            editing={ (this.state.editingTaskID === task.id) ? true : false }
+          />
+        )
+      }
+    });
+  }
+
+  renderCompletedTasks() {
+    return _.map(this.props.tasks, task => {
+      if (task.board_id === this.props.board.id && task.completed ) {
         return(
           <Task key={task.id} task={task}
             onClick={this.enableEditing}
@@ -58,6 +73,9 @@ class Tasks extends Component {
         <ul className="tasks">
           {this.renderTasks()}
           <NewTaskFaker board={this.props.board} />
+        </ul>
+        <ul className="tasks">
+          {this.renderCompletedTasks()}
         </ul>
       </div>
     )
