@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { userConstants, storageConstants } from '../constants';
-import { alertActions } from './'
+import { alertActions, signOutUser } from './'
 import { API_ROOT } from '../api-config';
 
 export const fetchCurrentUser = () => {
@@ -18,6 +18,9 @@ export const fetchCurrentUser = () => {
 
 const handleError = (error, dispatch) => {
   if (error.response) {
+    if(error.response.data.message == "Signature has expired") {
+      return dispatch(signOutUser());
+    }
     return dispatch(alertActions.error(error.response.data.message));
   } else if (error.request) {
     return dispatch(alertActions.error(error.request));
