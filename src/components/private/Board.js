@@ -42,19 +42,19 @@ class Board extends Component {
   render() {
     return(
       <div className="block__board" style={{maxWidth: 550+"px", }}>
-        <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
-          <fieldset className="board-header">
-            <input type="text" name="name" placeholder="Board name" className="input-h2" autoComplete="off"
-              ref={this.props.nameRef}
-              value={this.state.name}
-              onChange={this.handleInputChange}
-            />
-          </fieldset>
-        </form>
-        <Tasks board={this.props.board} />
-        <div className="board_footer">
-          <button className="btn-text" onClick={this.deleteBoard}><i className="far fa-trash-alt"></i></button>
+        <div className="board-header">
+          <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
+            <fieldset className="board-header">
+              <input type="text" name="name" placeholder="Board name" className="input-h2" autoComplete="off"
+                ref={this.props.nameRef}
+                value={this.state.name}
+                onChange={this.handleInputChange}
+              />
+            </fieldset>
+          </form>
+          <button className="btn-text btn-board-delete" onClick={this.deleteBoard}><i className="far fa-trash-alt"></i></button>
         </div>
+        <Tasks board={this.props.board} />
       </div>
     )
   }

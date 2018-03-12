@@ -21,7 +21,7 @@ body, input, textarea, button {
   line-height: 1.5rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #545454;
+  color: #504b4b;
 }
 h1,h2,h3,h4,h5,h6 { font-weight: 400; }
 h1,h2,h3,h4,h5,h6,p,ul,ol { margin: 0; padding: 20px; }
@@ -29,8 +29,8 @@ p, ul, ol { margin: 0; padding: 12px 20px; max-width: 630px; }
 p.lead { font-size: 18px; line-height: 1.5em; }
 hr { display: block; height: 0; margin: 12px 20px; padding: 0; border: none; border-top: 1px solid #ccc; }
 
-::selection { background: #ffe100; }
-::-moz-selection { background: #ffe100; }
+::selection { background: #e3ffe1; }
+::-moz-selection { background: #e3ffe1; }
 
 /* Links
 ================================================= */
@@ -77,7 +77,7 @@ input[type="submit"] {
   padding: 10px 20px 8px 20px;
   border: none;
   border-radius: 3px;
-  color: #1b1b1b;
+  color: #c1f5bc;
   font-size: 0.65em;
   font-weight: 700;
   text-transform: uppercase;
@@ -108,7 +108,7 @@ button.btn-text {
   font-weight: 400;
   padding: 0;
 }
-button.btn-text:hover { color: #10b958;  }
+button.btn-text:hover { color: #0b9847;  }
 button.btn-text:active {
   box-shadow: none;
 }
@@ -134,7 +134,7 @@ textarea {
   width: 100%;
   padding: 6px 10px;
   font-size: 1em;
-  color: #141520;
+  color: #504b4b;
   resize: none;
   border-radius: 3px;
 }
@@ -252,8 +252,9 @@ textarea { font-size: 1.25em; min-height: 160px; }
 
 
 /* Board */
-.block__board {
-
+.block__board {}
+.block__board .board-header {
+  position: relative;
 }
 .block__board fieldset {
   padding: 16px 20px 17px 20px;
@@ -262,7 +263,6 @@ textarea { font-size: 1.25em; min-height: 160px; }
   border-radius: 0;
   background: none;
   border: none;
-
   padding: 0;
 }
 .block__board .editable {
@@ -280,10 +280,19 @@ textarea { font-size: 1.25em; min-height: 160px; }
 .block__board input[type="text"].input-h2 {
   font-size: 1.5em;
 }
-.block__board .board_footer {
-  padding: 5px;
-  border-radius: 0 0 3px 3px;
-  text-align: center;
+.block__board .board-header .btn-board-delete {
+  display: none;
+  position: absolute;
+  top: 24px;
+  right: 20px;
+  font-size: 0.75em;
+  color: #848484;
+}
+.block__board .board-header:hover .btn-board-delete {
+  display: block;
+}
+.block__board .board-header .btn-board-delete:hover {
+  color: #0b9847;
 }
 
 /* Tasks */
@@ -307,14 +316,17 @@ ul.tasks li.task button.task-checkbox {
   display: inline-block;
   width: 14px; height: 14px;
   background: none;
-  border: 2px solid #545454;
+  border: 2px solid #848484;
   padding: 0;
-  margin: 1px 8px 0 0;
+  margin: 0 8px 0 0;
 
 }
+ul.tasks li.task button.task-checkbox:hover {
+  border-color: #0b9847;
+}
 ul.tasks li.task.task-complete button.task-checkbox {
-  background: #7d7d7d;
-  border-color: #7d7d7d;
+  background: #848484;
+  border-color: #848484;
 }
 ul.tasks li.task.task-complete button.task-checkbox::after {
   content: '';
@@ -344,8 +356,8 @@ ul.tasks li.task button.btn-task-delete {
 ul.tasks li.task:hover button.btn-task-delete {
   display: inline-block;
 }
-ul.tasks button.btn-task-delete:hover {
-  color: #e2cd02;
+ul.tasks li.task button.btn-task-delete:hover {
+  color: #0b9847;
 }
 
 /* Clearing
