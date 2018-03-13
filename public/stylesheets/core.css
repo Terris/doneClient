@@ -40,6 +40,7 @@ a:hover { color: #10b958; }
 /* Lists
 ================================================= */
 nav ul, nav ol { list-style-type: none; }
+li { padding-bottom: 8px; }
 
 /* Buttons
 ================================================= */
@@ -118,7 +119,7 @@ textarea { font-size: 1.25em; min-height: 160px; }
 .container {
   position: relative;
   width: 100%;
-  max-width: 900px;
+  max-width: 820px;
   margin: 0 auto;
   padding: 10px;
   box-sizing: border-box;
