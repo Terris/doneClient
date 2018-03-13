@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Alert from '../Alert';
 import Navigation from './Navigation';
 import CurrentUser from './CurrentUser';
 import BoardNav from './BoardNav';
-
 import BoardContainer from './BoardContainer';
+import NewBoard from './NewBoard.js'
 
 class Authorized extends Component {
   render() {
@@ -19,8 +19,13 @@ class Authorized extends Component {
         <Navigation />
         <CurrentUser />
         <Alert />
-        <BoardNav />
-        <Route path="/user/boards/:id" component={BoardContainer} />
+        <div className="wrapper">
+          <BoardNav />
+          <Switch>
+            <Route path="/user/boards/new" component={NewBoard} />
+            <Route path="/user/boards/:id" component={BoardContainer} />
+          </Switch>
+        </div>
       </div>
     )
   }

@@ -64,7 +64,7 @@ input[type="submit"]:hover {
 }
 button:active,
 input[type="submit"]:active {
-  background: #a5930b;
+  background: #0b9847;
 }
 button:focus,
 input:focus,
@@ -83,9 +83,8 @@ button.btn-text {
   padding: 0;
 }
 button.btn-text:hover { color: #0b9847;  }
-button.btn-text:active {
-  box-shadow: none;
-}
+button.btn-text:active { box-shadow: none; }
+
 /* Forms
 ================================================= */
 fieldset { padding: 12px 20px 0 20px; border: none; }
@@ -165,6 +164,8 @@ textarea { font-size: 1.25em; min-height: 160px; }
   display: none;
 }
 
+/* Wrapper */
+.wrapper { position: relative; width: 100%; }
 /* Board Navigation */
 .layout_boards_nav { float: left; width: 100%; }
 
@@ -173,12 +174,14 @@ textarea { font-size: 1.25em; min-height: 160px; }
 
 @media (min-width: 550px) {
   .layout_boards_nav {
+    position: relative;
+    z-index: 999;
     width: 210px;
   }
   .layout_boards_main {
     position: absolute;
-    margin-left: 210px;
-    padding-right: 276px;
+    z-index: 1;
+    padding-left: 210px;
   }
 }
 

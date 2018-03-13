@@ -10,6 +10,10 @@ class BoardNav extends Component {
     this.props.fetchBoards();
   }
 
+  addNewBoard() {
+    this.props.addNewBoard()
+  }
+
   renderBoards() {
     return _.map(this.props.boards, board => {
       return(
@@ -24,6 +28,7 @@ class BoardNav extends Component {
         <hr />
         <ul>
           {this.renderBoards()}
+          <li><Link to="/user/boards/new">+ New Board</Link></li>
         </ul>
       </nav>
     )

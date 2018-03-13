@@ -12,6 +12,7 @@ class Board extends Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteBoard = this.deleteBoard.bind(this);
   }
 
   editBoard = () => {
@@ -20,7 +21,9 @@ class Board extends Component {
 
   deleteBoard = () => {
     if (window.confirm('Are you sure?')){
-      this.props.deleteBoard({board: this.props.board})
+      this.props.deleteBoard({board: this.props.board}, () => {
+        this.props.onDeleteBoard();
+      });
     }
   }
 
@@ -41,7 +44,7 @@ class Board extends Component {
 
   render() {
     return(
-      <div className="block__board" style={{maxWidth: 550+"px", }}>
+      <div className="block__board">
         <div className="board-header">
           <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
             <fieldset className="board-header">

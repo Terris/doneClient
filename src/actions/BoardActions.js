@@ -15,13 +15,13 @@ export const fetchBoards = () => {
   }
 }
 
-export const addNewBoard = (callback) => {
+export const addNewBoard = ({ board }, callback) => {
   return dispatch => {
-    axios.post(`${API_ROOT}/boards`, { name: 'New Board' }, {
+    axios.post(`${API_ROOT}/boards`, { board }, {
       headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
     }).then((response) => {
       dispatch({ type: boardConstants.NEW_BOARD, board: response.data });
-      callback(response.data.id);
+      callback(response.data);
     }).catch((error) => {
       handleError(error, dispatch)
     })
@@ -40,12 +40,13 @@ export const updateBoard = ({ board }) => {
   }
 }
 
-export const deleteBoard = ({ board }) => {
+export const deleteBoard = ({ board }, callback) => {
   return dispatch => {
     axios.delete(`${API_ROOT}/boards/${board.id}`, {
       headers: { Authorization: localStorage.getItem(storageConstants.USER_TOKEN) }
     }).then((response) => {
       dispatch({ type: boardConstants.DELETE_BOARD, board: board})
+      callback();
     }).catch((error) => {
       handleError(error, dispatch)
     })
