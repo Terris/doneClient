@@ -40,7 +40,7 @@ class Task extends Component {
     } else {
       this.props.deleteTask({task: this.props.task});
     }
-    this.props.onUpdateTask();
+    this.descriptionInput.blur();
   }
 
   handleInputChange(e) {
@@ -57,15 +57,16 @@ class Task extends Component {
   }
 
   render() {
-
     return(
       <li className={`task task-${(this.state.completed) ? 'complete' : 'incomplete'}`}>
         <button className="task-checkbox" onClick={this.completeTask}></button>
         <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
           <input type="text" name="description" placeholder="description" autoComplete="off"
-            ref={this.props.descriptionRef}
+            ref={input => this.descriptionInput = input}
             value={this.state.description}
-            onChange={this.handleInputChange} />
+            onChange={this.handleInputChange}
+            disabled={this.state.completed ? 'disabled' : ''}
+          />
         </form>
         <button className="btn-text btn-task-delete" onClick={this.deleteTask}><i className="fas fa-times-circle"></i></button>
       </li>

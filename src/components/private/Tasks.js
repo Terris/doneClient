@@ -8,29 +8,12 @@ import NewTaskFaker from './NewTaskFaker';
 class Tasks extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      editingTaskID: null
-    }
     this.addNewTask = this.addNewTask.bind(this);
-    this.onUpdateTask = this.onUpdateTask.bind(this);
   }
 
   addNewTask = () => {
     const task = { board_id: this.props.board.id, description: "task description" }
-    this.props.addNewTask({ task }, (newTaskID) => {
-      this.setState({ editingTaskID: newTaskID }, () => {this.description.select()});
-    });
-  }
-
-  onUpdateTask() {
-    this.setState({ editingTaskID: null });
-    this.description.blur();
-  }
-
-  enableEditing = (id) => {
-    this.setState({editingTaskID: id }, () => {
-      this.description.focus();
-    });
+    this.props.addNewTask({ task });
   }
 
   renderTasks() {
@@ -38,10 +21,7 @@ class Tasks extends Component {
       if (task.board_id === this.props.board.id && !task.completed ) {
         return(
           <Task key={task.id} task={task}
-            onClick={this.enableEditing}
-            onUpdateTask={this.onUpdateTask}
             descriptionRef={input => this.description = input}
-            editing={ (this.state.editingTaskID === task.id) ? true : false }
           />
         )
       }
@@ -52,12 +32,7 @@ class Tasks extends Component {
     return _.map(this.props.tasks, task => {
       if (task.board_id === this.props.board.id && task.completed ) {
         return(
-          <Task key={task.id} task={task}
-            onClick={this.enableEditing}
-            onUpdateTask={this.onUpdateTask}
-            descriptionRef={input => this.description = input}
-            editing={ (this.state.editingTaskID === task.id) ? true : false }
-          />
+          <Task key={task.id} task={task} />
         )
       }
     });
