@@ -6,38 +6,21 @@ import Board from './Board';
 
 class BoardContainer extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      editingBoardID: null
-    }
-  }
-
   componentDidMount() {
     this.props.fetchBoards();
     this.props.fetchTasks();
   }
 
   addNewBoard = () => {
-    this.props.addNewBoard((newID) => {
-      this.setState({ editingBoardID: newID }, () => { this.name.select() })
-    });
+    this.props.addNewBoard();
   }
 
   updateBoard = () => {
-    this.setState({ editingBoardID: null });
     this.name.blur();
   }
 
   deleteBoard = () => {
     this.props.history.push('/user')
-  }
-
-  enableEditing = (id) => {
-    this.setState({editingBoardID: id }, () => {
-      this.name.focus();
-      this.name.setSelectionRange(this.name.value.length, this.name.value.length);
-    });
   }
 
   render() {
@@ -54,11 +37,9 @@ class BoardContainer extends Component {
         <hr />
         <Board key={this.props.board.id}
           board={this.props.board}
-          onClick={this.enableEditing}
           onUpdateBoard={this.updateBoard}
           onDeleteBoard={this.deleteBoard}
           nameRef={input => this.name = input}
-          editing={ (this.state.editingBoardID === this.props.board.id) ? true : false }
         />
       </div>
     )

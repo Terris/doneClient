@@ -34,7 +34,6 @@ class NewTaskFaker extends Component {
         <button className="btn-text task-checkbox"></button>
         <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
           <input type="text" name="description" placeholder="new task" autoComplete="off"
-            ref={this.props.descriptionRef}
             value={this.state.description}
             onChange={this.handleInputChange} />
         </form>

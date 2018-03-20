@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addNewBoard } from '../../actions';
 
@@ -11,6 +10,10 @@ class NewBoard extends Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.nameInput.focus();
   }
 
   handleInputChange(e) {
@@ -40,7 +43,7 @@ class NewBoard extends Component {
             <form onSubmit={this.handleSubmit} onBlur={this.handleSubmit}>
               <fieldset className="board-header">
                 <input type="text" name="name" placeholder="New Board" className="input-h2" autoComplete="off"
-                  ref={this.props.nameRef}
+                  ref={input => this.nameInput = input}
                   value={this.state.name}
                   onChange={this.handleInputChange}
                 />
